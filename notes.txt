@@ -1,0 +1,39 @@
+overview di javascript
+	hello world
+	variabili
+		dichiarazione
+		definizione
+		dichiarazione e definizione
+		let, const, var
+		stringhe
+		numeri
+		liste
+		oggetti
+	controllo di flusso
+		if, else, else if
+		for
+		while
+	funzioni
+	classi
+		this
+	asincronia
+
+web
+	internet e www
+	browser web
+	http
+	cosa fa il browser
+	dom
+	css
+	javascript nel browser
+	json
+
+applicazione web
+	creazione di app con framework X
+	app offline
+
+backend
+	express
+	sequelize
+	sqlite3
+	
