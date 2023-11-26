@@ -172,15 +172,15 @@ while (true) { // condizione di ciclo sempre soddisfatta
 	}
 	i = i + 1;
 } // ternary operator, 
-console.log( (prime) ? (number + " è primo") : (number + " non è primo"))
+console.log( (prime) ? (number + " is prime") : (number + " is not prime"))
 
-let linea;
+let line;
 for (let x = 0; x < 10; x++) { // assegnamento, condizione di ciclo, istruzione a fine ciclo
-	linea = ""
+	line = ""
 	for (let y = 0; y < 10; y++) {
 		linea += (x * y) + " ";
 	}
-	console.log(linea); 
+	console.log(line); 
 } 
 ```
 
