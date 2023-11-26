@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "marp --allow-local-files --html sviluppo_web_in_javascript.md -o sviluppo_web_in_javascript.pdf"
+    "build": "find slides -maxdepth 1 -type f -name '*.md' -exec bash -c 'marp --allow-local-files --html \"$0\" -o \"./out/$(basename ${0%.md}.pdf)\"' {} \\; ; cd out ; ls *.pdf | sort --numeric-sort | xargs pdfunitechapters ; mv output.pdf ../sviluppo_web_in_javascript.pdf"
   },
   "author": "",
   "license": "ISC",

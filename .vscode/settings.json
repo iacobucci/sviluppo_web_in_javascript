@@ -1,8 +1,4 @@
 {
 	"markdown.marp.enableHtml": true,
-	"markdown-mermaid.lightModeTheme": "neutral",
-	"markdown-mermaid.darkModeTheme": "neutral",
-	"markdown.styles": [
-		"https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-	]
+	"markdown.preview.scrollEditorWithPreview": false
 }

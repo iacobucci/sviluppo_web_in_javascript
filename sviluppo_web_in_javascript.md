@@ -2,12 +2,9 @@
 marp: true
 ---
 
-# Sviluppo web con Javascript
-### Valerio Iacobucci ([@iacobucci](https//github.com/iacobucci))
-
-<script src="node_modules/mermaid/dist/mermaid.min.js"></script>
-
-<script>mermaid.initialize({startOnLoad:true, theme:"forest", mirrorActors:false});</script>
+<script src="node_modules/mermaid/dist/mermaid.min.js">
+mermaid.initialize({startOnLoad:true, theme:"forest", mirrorActors:false});
+</script>
 
 <style>
 	.mermaid {
@@ -28,6 +25,10 @@ marp: true
 		padding: 20px
 	}
 </style>
+
+# Sviluppo web con Javascript
+### Valerio Iacobucci ([@iacobucci](https//github.com/iacobucci))
+
 
 ---
 
@@ -229,23 +230,22 @@ HyperText Transfer Protocol è il protocollo per WWW.
 
 ```
 GET / HTTP 1.1
-Host: www.google.com
-q=come+funziona+javascript
+Host: www.google.com/search?q=come+funziona+javascript
 ```
+
+ci connettiamo a `www.google.com`, chiediamo la pagina `/search` e passiamo il parametro `q` con valore `come funziona javascript`.
+
 
 ```html
 <html>
-	<style>
-		/* codice css */
-	</style>
-		<!-- codice html-->
-	...
-	<div>Risultato di ricerca 1</div>
-	<div>Risultato di ricerca 2</div>
-	...
-	<script>
-		// codice javascript
-	</script>
+	<style> /* codice css */ </style>
+	<!-- elementi html -->
+	<body>
+		<div>Risultato di ricerca 1</div>
+		<div>Risultato di ricerca 2</div>
+		...
+	</body>
+	<script> // codice javascript </script>
 </html>
 ```
 
@@ -283,6 +283,7 @@ Ha una struttura ad albero, ogni nodo è un elemento HTML.
 		<p>il risultato 2 è
 		<a href="/risultati/2">questo</a></p>
 	</div>
+	...
 </div>
 </body>
 ```
@@ -326,11 +327,12 @@ h1 { color: blue; }
 
 #b1{ width: 100%; height: 50px; }
 ```
-- **classe** `.container` e `.content` sono le classi per contenitore e contenuto (provare ad innestare e a modificare regole tramite strumenti di sviluppo)
+- **classe** `.container` e `.content` sono le classi per contenitore e contenuto
 - **id** `#b1` identifica un elemento
 - **elemento** `h1` mette a default il colore di tutti gli h1
 - **stile inline** `style="color:red"` ha la precedenza su tutte le regole.
 
+Provate ad innestare elementi container e content, e a modificare le regole css.
 
 ---
 
@@ -343,6 +345,8 @@ document.getElementById("b1").onclick = function(){
 	document.getElementById("b1").innerHTML = "Ottenimento dei risultati...";
 } // cambia il testo del bottone al suo evento onclick
 
+// ottieni i children di un elemento
+
 
 // utilizziamo fetch per fare richieste, al posto di form http o Ajax
 
@@ -354,6 +358,64 @@ document.getElementById("b1").onclick = function(){
 
 ---
 
+# Resa grafica
+
+<html>
+
+<div style="border: 3px solid #224466 ;padding: 20px; margin-bottom: 20px;">
+	<button id="b1_mock">Ottieni risultati</button>
+	<div class="container_mock">
+		<div class="content_mock">
+			<h1 style="color: red">Risultato 1</h1>
+			<p>il risultato 1 è
+			<a href="/risultati/1">questo</a></p>
+		</div>
+		<div class="content_mock">
+			<h1 class="h1.mock">Risultato 2</h1>
+			<p>il risultato 2 è
+			<a href="/risultati/2">questo</a></p>
+		</div>
+		<div class="content_mock">
+			<h1 class="h1.mock">Risultato 3</h1>
+			<p>il risultato 3 è
+			<a href="/risultati/3">questo</a></p>
+		</div>
+		<div class="content_mock">
+			...
+		</div>
+	</div>
+</div>
+
+<style>
+	.h1_mock {
+		color: blue;
+	}
+	
+	.container_mock{
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+	}
+	.content_mock{
+		display: flex;
+		width: 100%;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#b1_mock{
+		width: 100%;
+		height: 50px;
+	}
+</style>
+</html>
+
+Il risultato è gia una *single page application*, ma non è dinamica
+
+---
+
+jQuery
+Axios
 Json
 I pacchetti Npm
 Lo stack tecnologico
