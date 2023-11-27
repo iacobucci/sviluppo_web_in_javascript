@@ -21,6 +21,7 @@ sequenceDiagram
 	activate Server
     Server->>Client: risposta
 	deactivate Server
+
 </div>
 
 ---
@@ -223,6 +224,4 @@ document.getElementById("b1").onclick = function(){
 </style>
 </html>
 
-Il risultato è gia una *single page application*, ma non è dinamica
-
----
+Il risultato è gia una **single page application**, ma non è reactive

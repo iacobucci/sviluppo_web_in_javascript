@@ -22,7 +22,7 @@ marp: true
 > apt install nodejs
 > ```
 
-> Mac os è un parente più stretto a Linux, potete usare le funzionalità Unix dal terminale ed installare node con Homebrew:
+> Mac os è un parente più stretto a Linux, potete usare le funzionalità *Unix* dal terminale ed installare node con Homebrew:
 > ```shell
 > /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 > brew install node

@@ -27,8 +27,8 @@ let isJsDull = !isJsAwesome; // negazione booleana, and: &&, or: ||
 
 const PI = 3.1415; // costante, case sensitivity
 x = 1; x = "1" // assegnamento, tipo dinamico, x è stata gia dichiarata e può essere riassegnata
-PI = 4 // TypeError
 x = PI % 1 // modulo, parte frazionaria, perdita di precisione, 0.14150000000000018 
+try {PI = 4} catch (TypeError) {console.log("You can't set a constant")}
 ```
 Usare `console.log(<nome variabile>)` per stampare il valore di una variabile.
 
