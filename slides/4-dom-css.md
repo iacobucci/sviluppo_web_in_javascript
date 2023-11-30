@@ -40,7 +40,7 @@ Useremo il browser con gli **strumenti sviluppatore**, accessibili con il tasto 
 
 # Http
 
-HyperText Transfer Protocol è il protocollo per WWW.
+È il protocollo per WWW. Faremo richieste **GET** e **POST**.
 
 ```
 GET / HTTP 1.1

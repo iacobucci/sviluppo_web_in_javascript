@@ -11,19 +11,19 @@ Le tecnologie trattate sono:
 - Node.js
 - Express
 - Sequelize (con sqlite3)
-- Svelte (o un altro framework frontend a componenti da valutare)
+- Vue.js
 
 La spiegazione può essere adattata a seconda del livello di conoscenza dei partecipanti, del tempo disponibile o del capitolo di maggiore interesse.
 
 ### Corso da una settimana  
 1) Introduzione ed installazione degli strumenti di sviluppo, primi esempi di codice
 2) Spiegazione del modello client-server, del funzionamento del browser ed esempi con HTML, CSS e Javascript DOM.
-3) Panoramica sulle librerie di terze parti e al concetto di framework, esempi con Node.js e Svelte
-4) Esposizione sul backend, con esempi di codice con Express e Sequelize, esempi di collegamento con il frontend
+3) Esposizione sul backend, con esempi di codice con Express e Sequelize, esempi di collegamento con il frontend
+4) Panoramica sul concetto di framework, esempi con Node.js e Vue
 5) Estensione del lavoro in una repository git, deploy su un server remoto e possibili sviluppi futuri
 
 ### Corso da un giorno  
-Le slide sono molto concise e vertono su controesempi per introdurre a chi ha già esperienza con altri linguaggi di programmazione i concetti fondamentali di Javascript e della programmazione web.  
+Le slide sono molto concise e vertono su controesempi per introdurre a chi ha già esperienza con altri linguaggi di programmazione i concetti fondamentali di Javascript e della programmazione web. 
 Il corso da un giorno è apprezzabile anche da chi non ha esperienza con il codice, ma vuole capire come funziona il web in una conferenza di circa un ora e mezza che tratta l'argomento con completezza.
 
 ### Video su youtube

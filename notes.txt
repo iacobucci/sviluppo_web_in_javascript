@@ -1,0 +1,79 @@
+1
+	- obiettivo del corso
+	installazione degli strumenti
+		- linux
+		- visual studio code
+		- node.js
+	---
+	tutorial programmazione
+		- variabili
+		- controllo del flusso
+			if else if else
+		- funzioni
+			dichiarazione
+			definizione
+			chiamata
+	esercizi di programmazione
+		funzioni
+			max tra due numeri
+			max tra tre numeri
+		impiccato
+
+2
+	introdurre client-server
+		- internet e www
+		- browser web
+		- http
+	- cosa fa il browser
+		- dom
+		- css
+		- resa grafica
+	---
+		- javascript dom
+			localStorage
+	tutorial programmazione
+		- array ed oggetti
+		- alcune funzioni accessorie
+
+3
+	node init
+	package.json
+		script
+			"start":"node index.js"
+	npm install
+		viene creato package-lock.json
+		- express
+			- json
+			- risposte con json
+		- nodemon
+	tutorial programmazione
+		- classi
+		- asincronia
+
+4
+	vue
+		npm install -g @vue/cli
+		npx vue create .
+			manually select features
+			deselezionare babel
+			deselezionare linter / formatter
+			selezionare router
+			scegliere yes per history mode
+			scegliere config files dedicati
+			vue 3.0
+			scegliere se impostare questo come progetto predefinito
+		in package.json
+			npx vue-cli-service build --watch
+	express per far funzionare il router
+		app.use(express.static(path.join(__dirname, 'dist')));
+		app.get('*', (req, res) => {
+			res.sendFile(path.join(__dirname, 'dist/index.html'));
+		});
+	axios
+
+5
+	npm install jsonwebtoken sequelize sequelize-cli
+	git
+	bundles
+	onrender
+		self-ping
