@@ -16,9 +16,9 @@ Le tecnologie trattate sono:
 La spiegazione può essere adattata a seconda del livello di conoscenza dei partecipanti, del tempo disponibile o del capitolo di maggiore interesse.
 
 ### Corso da una settimana  
-1) Introduzione ed installazione degli strumenti di sviluppo, primi esempi di codice
-2) Spiegazione del modello client-server, del funzionamento del browser ed esempi con HTML, CSS e Javascript DOM.
-3) Esposizione sul backend, con esempi di codice con Express e Sequelize, esempi di collegamento con il frontend
+1) Introduzione ed installazione degli strumenti di sviluppo, primi esempi di codice Javascript
+2) Spiegazione del modello client-server, del funzionamento del browser ed esempi con HTML, CSS e Javascript DOM. Esempi di array e oggetti in Javascript.
+3) Esposizione sul backend, con esempi di codice con Express. Definizione di classi e asincronia in Javascript.
 4) Panoramica sul concetto di framework, esempi con Node.js e Vue
 5) Estensione del lavoro in una repository git, deploy su un server remoto e possibili sviluppi futuri
 

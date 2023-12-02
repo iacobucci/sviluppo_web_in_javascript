@@ -19,6 +19,9 @@
 			max tra tre numeri
 		impiccato
 
+		test con jest
+			branch soluzioni
+
 2
 	introdurre client-server
 		- internet e www
@@ -52,7 +55,7 @@
 
 4
 	vue
-		npm install -g @vue/cli
+		npm install -g axios @vue/cli
 		npx vue create .
 			manually select features
 			deselezionare babel
@@ -73,6 +76,13 @@
 
 5
 	npm install jsonwebtoken sequelize sequelize-cli
+	npm install bootstrap-vue axios
+
+	npx sequelize init
+	npx sequelize model:generate --name User --attributes username:string,password:string
+
+	mkdir middleware
+
 	git
 	bundles
 	onrender
