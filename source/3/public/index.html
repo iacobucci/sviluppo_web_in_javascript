@@ -1,0 +1,16 @@
+<body>
+	<button onclick="fetchHello()">Premi per fetch di Hello</button>
+
+	<script>
+		function fetchHello() {
+			fetch('/api/hello', {
+				method: 'POST',
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data);
+				});
+		}
+
+	</script>
+</body>

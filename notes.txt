@@ -1,89 +1,110 @@
-1
-	- obiettivo del corso
-	installazione degli strumenti
-		- linux
-		- visual studio code
-		- node.js
-	---
-	tutorial programmazione
-		- variabili
-		- controllo del flusso
-			if else if else
-		- funzioni
-			dichiarazione
-			definizione
-			chiamata
-	esercizi di programmazione
-		funzioni
-			max tra due numeri
-			max tra tre numeri
-		impiccato
+esercizi
+	jest
+	1
+		max2
+		max3
+	2
+	3
+	4
+	5
 
-		test con jest
-			branch soluzioni
+slides
+	1 logica
+		- obiettivo del corso
+			creare un'app mvc
+			caso dela gestione dei condomini
+		installazione degli strumenti
+			- linux
+			- visual studio code
+			- node.js
+		---
+		tutorial programmazione
+			- variabili
+			- controllo del flusso
+				if else if else
+			- funzioni
+				dichiarazione
+				definizione
+				chiamata
+		esercizi di programmazione
+			funzioni
+				max tra due numeri
+				max tra tre numeri
+			test con jest
+				branch soluzioni
 
-2
-	introdurre client-server
-		- internet e www
-		- browser web
-		- http
-	- cosa fa il browser
-		- dom
-		- css
-		- resa grafica
-	---
-		- javascript dom
-			localStorage
-	tutorial programmazione
-		- array ed oggetti
-		- alcune funzioni accessorie
+	2 client
+		introdurre client-server
+			- internet e www
+			- http
+			- browser web
+		- cosa fa il browser
+			- dom
+			- css
+			- resa grafica
+		---
+			- javascript dom
+				localStorage
+		tutorial programmazione
+			- array ed oggetti
+			- alcune funzioni accessorie
 
-3
-	node init
-	package.json
-		script
-			"start":"node index.js"
-	npm install
-		viene creato package-lock.json
-		- express
-			- json
-			- risposte con json
-		- nodemon
-	tutorial programmazione
-		- classi
-		- asincronia
+	3 controller
+		- pattern mvc
+		- localhost
+		node init
+		package.json
+			type
+				module
+			script
+				start
+					node index.js
+		npm install
+			viene creato package-lock.json
+			- express
+				- json
+				- risposte con json
+			- nodemon
+		tutorial programmazione
+			- asincronia
+				promise
+					then
+				async
+					await
+			- import export
+				https://www.digitalocean.com/community/tutorials/js-modules-es6
+		risolvere problema della persistenza
 
-4
-	vue
-		npm install -g axios @vue/cli
-		npx vue create .
-			manually select features
-			deselezionare babel
-			deselezionare linter / formatter
-			selezionare router
-			scegliere yes per history mode
-			scegliere config files dedicati
-			vue 3.0
-			scegliere se impostare questo come progetto predefinito
-		in package.json
-			npx vue-cli-service build --watch
-	express per far funzionare il router
-		app.use(express.static(path.join(__dirname, 'dist')));
-		app.get('*', (req, res) => {
-			res.sendFile(path.join(__dirname, 'dist/index.html'));
-		});
-	axios
+	4 model
+		https://ismayilkhayredinov.medium.com/sequelize-model-loading-with-es6-ffe4f38fd9b6
 
-5
-	npm install jsonwebtoken sequelize sequelize-cli
-	npm install bootstrap-vue axios
+		npm install jsonwebtoken sequelize sequelize-cli
+		npm install bootstrap-vue axios
 
-	npx sequelize init
-	npx sequelize model:generate --name User --attributes username:string,password:string
+		npx sequelize init
+		npx sequelize model:generate --name User --attributes username:string,password:string
 
-	mkdir middleware
+		mkdir middleware
 
-	git
-	bundles
-	onrender
-		self-ping
+		tutorial
+			- classi
+
+	5 view
+		vue
+			npm install -g axios @vue/cli
+			npx vue create .
+				manually select features
+				deselezionare babel
+				deselezionare linter / formatter
+				selezionare router
+				scegliere yes per history mode
+				scegliere config files dedicati
+				vue 3.0
+				scegliere se impostare questo come progetto predefinito
+			in package.json
+				npx vue-cli-service build --watch
+		express per far funzionare il router
+			app.use(express.static(path.join(__dirname, 'dist')));
+			app.get('*', (req, res) => {
+				res.sendFile(path.join(__dirname, 'dist/index.html'));
+			});
