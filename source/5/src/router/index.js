@@ -1,26 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomepageView from '../views/HomepageView.vue'
+import Homepage from '../views/Homepage.vue'
+import Login from '../views/Login.vue'
+import Registrazione from '../views/Registrazione.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomepageView
-  }, // questo componente viene caricato subito
-  {
-    path: '/about',
-    name: 'about',
-    component: function () {
-      return import('../views/AboutView.vue')
-    } // questa funzione fa il lazy loading del componente
+    component: Homepage
   },
   {
     path: '/login',
-    name: 'login',
     component: function () {
       return import('../views/Login.vue')
     }
   },
+  {
+    path: '/registrazione',
+    component: function () {
+      return import('../views/Registrazione.vue')
+    }
+  }
 ]
 
 const router = createRouter({

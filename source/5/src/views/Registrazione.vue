@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>Login</h2>
+		<h2>Registrazione</h2>
 		<div>
 			<input v-model="email" type="email" required placeholder="email">
 		</div>
@@ -10,7 +10,11 @@
 		</div>
 
 		<div>
-			<button @click="this.login()" type="submit">Login</button>
+			<input v-model="confermaPassword" type="password" required placeholder="conferma password">
+		</div>
+
+		<div>
+			<button @click="this.registrazione()">Registrati</button>
 		</div>
 		<p v-if="error" style="color: red;">{{ error }}</p>
 	</div>
@@ -22,13 +26,22 @@ export default {
 		return {
 			email: '',
 			password: '',
+			confermaPassword: '',
 			error: null,
 		};
 	},
 	methods: {
-		async login() {
+		async registrazione() {
 			try {
-				const response = await fetch('/api/login', {
+
+				if (this.password != this.confermaPassword) {
+					this.error = 'Le password non corrispondono';
+					console.log(this.error);
+					return;
+				}
+
+
+				const response = await fetch('/api/registrazione', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -41,16 +54,15 @@ export default {
 
 				const data = await response.json();
 
-				if (!response.error) {
+				if (response.error != undefined) {
 					// Login success
 					// Salva il token nel localStorage o in un cookie
 					localStorage.setItem('token', JSON.stringify(data.token));
 					localStorage.setItem('admin', (data.admin == "true") ? true : false);
 
 					// Puoi anche reindirizzare l'utente a un'altra pagina
-
 					this.emitter.emit("reload-homepage", null);
-					this.$router.push('/');
+					this.$router.push('/dashboard');
 				} else {
 					// Login fallito
 					this.error = data.error;

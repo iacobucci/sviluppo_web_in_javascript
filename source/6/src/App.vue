@@ -1,20 +1,15 @@
 <template>
   <nav>
     <router-link to="/">Homepage</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <router-link to="/registrazione">Registrazione</router-link> |
-    <logout-button></logout-button>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/login">Login</router-link>
   </nav>
-  <router-view />
+  <router-view/>
 </template>
 
 <script>
-import LogoutButton from './components/LogoutButton.vue';
 export default {
-  name: 'App',
-  components: {
-    LogoutButton,
-  },
+  name: "App"
 };
 </script>
 

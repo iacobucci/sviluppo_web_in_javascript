@@ -1,14 +1,12 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import { BootstrapVue3 } from 'bootstrap-vue-3';
+import { createApp } from 'vue'
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
+import App from './App.vue'
+import router from './router'
 
+import mitt from 'mitt';
+const emitter = mitt();
 
+let app = createApp(App)
 
-const app = createApp(App);
-app.use(router);
-app.use(BootstrapVue3)
-app.mount('#app');
+app.use(router).mount('#app')
+app.config.globalProperties.emitter = emitter;

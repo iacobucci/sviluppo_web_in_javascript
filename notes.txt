@@ -73,25 +73,18 @@ slides
 					await
 			- import export
 				https://www.digitalocean.com/community/tutorials/js-modules-es6
-		risolvere problema della persistenza
+		come risolvere problema della persistenza
 
 	4 model
-		https://ismayilkhayredinov.medium.com/sequelize-model-loading-with-es6-ffe4f38fd9b6
-
 		npm install jsonwebtoken sequelize sequelize-cli
 		npm install bootstrap-vue axios
-
-		npx sequelize init
-		npx sequelize model:generate --name User --attributes username:string,password:string
-
-		mkdir middleware
 
 		tutorial
 			- classi
 
 	5 view
 		vue
-			npm install -g axios @vue/cli
+			npm install -g @vue/cli
 			npx vue create .
 				manually select features
 				deselezionare babel
@@ -101,6 +94,9 @@ slides
 				scegliere config files dedicati
 				vue 3.0
 				scegliere se impostare questo come progetto predefinito
+			rm
+				.browserlistrc
+				.jsconfig.json
 			in package.json
 				npx vue-cli-service build --watch
 		express per far funzionare il router
@@ -108,3 +104,9 @@ slides
 			app.get('*', (req, res) => {
 				res.sendFile(path.join(__dirname, 'dist/index.html'));
 			});
+		tutorial 
+			localStorage
+		admin
+			dashboard
+			download database
+			upload database

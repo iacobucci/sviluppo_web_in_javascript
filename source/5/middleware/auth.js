@@ -1,18 +1,31 @@
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import { User } from '../model/User.js'
 
-const authMiddleware = (req, res, next) => {
+dotenv.config()
+
+const authMiddleware = async (req, res, next) => {
   const token = req.header('x-auth-token');
 
   if (!token) {
-    return res.status(401).json({ msg: 'Token mancante, autorizzazione negata' });
+    req.json({ error: 'Token non presente' })
+    return;
   }
 
   try {
-    const decoded = jwt.verify(token, 'your-secret-key');
-    req.user = decoded.user;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findOne({ where: { id: decoded.user.id } });
+
+
+    if (!req.user) {
+      req.json({ error: 'Utente non esistente' });
+      return;
+    }
+
     next();
   } catch (error) {
-    res.status(401).json({ msg: 'Token non valido' });
+    res.json({ error: 'Token non valido' })
+    return;
   }
 };
 

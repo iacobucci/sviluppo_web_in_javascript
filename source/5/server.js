@@ -1,31 +1,13 @@
-import path from "path";
+import express from 'express';
+import path from 'path';
 
-import express from "express";
+
 const app = express();
 
-import bodyParser from "body-parser";
+const __dirname = path.resolve(path.dirname(decodeURI(new URL(import.meta.url).pathname)));
+let pub = path.join(__dirname, 'dist', 'index.html');
+console.log(pub);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
-
-import { Sequelize, DataTypes } from "sequelize";
-
-const sequelize = new Sequelize({
-	dialect: 'sqlite',
-	storage: './database.sqlite'
-});
-
-// const User = userModel(sequelize, DataTypes);
-import User from "./models/user.js";
-
-// const authMiddleware = require('./middleware/auth');
-import authMiddleware from "./middleware/auth.js";
-
-// const jwt = require('jsonwebtoken');
-import jwt from "jsonwebtoken";
-
-
-// Route principale che restituisce l'index.html per qualsiasi percorso, tranne quelli che iniziano con /api o /js o /css o /favicon.ico
 app.use((req, res, next) => {
 	if (req.url.startsWith('/api')) {
 		next();
@@ -39,88 +21,181 @@ app.use((req, res, next) => {
 	}
 });
 
-// con body-parser si ottengono i dati inviati dal client nel body della richiesta, e vengono messi in req.body come proprietà. req.body all'inizio è {}.
-app.post('/api/echo', (req, res) => {
-	const { username, password } = req.body;
-	res.json({ username, password });
+import bodyParser from "body-parser";
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+
+
+import { Sequelize, Op } from 'sequelize';
+import { sequelize } from './model/index.js';
+import { Condominio } from './model/Condominio.js';
+import { Pagamento } from './model/Pagamento.js';
+import { Residente } from './model/Residente.js';
+import { User } from './model/User.js';
+import { ResidentiCondomini } from './model/ResidentiCondomini.js';
+
+import authMiddleware from './middleware/auth.js';
+
+app.post('/api/listcondomini', async (req, res) => {
+	let condominios = await Condominio.findAll();
+	res.json(condominios);
 });
 
-app.post('/api/register', async (req, res) => {
-	try {
-		const { username, password } = req.body;
 
-		const existingUser = await User.findOne({ where: { username: username } });
+app.post('/api/listresidenti', authMiddleware, async (req, res) => {
+
+	if (!req.user.admin) {
+		res.json({ error: "Non sei admin" });
+		return;
+	}
+
+	let { idCondominio } = req.body;
+	let condominio = await Condominio.findByPk(idCondominio);
+	let residentiDelCondominio = await condominio.getResidentes();
+	res.json(residentiDelCondominio);
+});
+
+app.post('/api/listpagamenti', authMiddleware, async (req, res) => {
+
+
+	let { idResidente } = req.body;
+
+	if (!req.user.admin) {
+		if (idResidente != req.user.id) {
+			res.json({ error: "Non hai i permessi per questa lista" });
+		}
+	}
+
+	const daVersare = await Pagamento.findAll({
+		where: {
+			idResidente: idResidente,
+			versato:
+				{ [Op.lt]: Sequelize.literal('importo') }
+		}
+	});
+
+	const versati = await Pagamento.findAll({
+		where: {
+			idResidente: idResidente,
+			versato:
+				{ [Op.gte]: Sequelize.literal('importo') }
+		},
+	});
+
+	console.log(daVersare, versati);
+
+	res.json({ daVersare, versati });
+});
+
+app.post('/api/versapagamento', authMiddleware, async (req, res) => {
+
+	if (!req.user.admin) {
+		res.json({ error: "Non sei admin" });
+		return;
+	}
+
+	let { idPagamento, versamento } = req.body;
+	let pagamento = await Pagamento.findByPk(idPagamento);
+
+	if (!pagamento) {
+		res.json({ error: "Pagamento non trovato" });
+		return;
+	}
+
+	if (versamento <= pagamento.importo - pagamento.versato) {
+		pagamento.versato += parseInt(versamento);
+		try {
+			await pagamento.save();
+			res.json(pagamento);
+		}
+		catch (err) {
+			res.json({ error: "Errore nel salvataggio" });
+		}
+	}
+	else {
+		res.json({ error: "Versamento troppo alto" });
+	}
+});
+
+const port = process.env.PORT || 3000;
+
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+import jwt from "jsonwebtoken";
+
+app.post('/api/registrazione', async (req, res) => {
+	try {
+		const { email, password } = req.body;
+
+		const existingUser = await User.findOne({ where: { email: email } });
 		if (existingUser) {
-			return res.status(400).json({ msg: 'L\'utente esiste già' });
+			res.json({ error: 'Utente già esistente' });
+			return;
 		}
 
 		const newUser = await User.create({
-			username: username,
+			email: email,
 			password: password,
 		});
 
 		const token = jwt.sign(
 			{ user: { id: newUser.id } },
-			'your-secret-key',
-			{ expiresIn: "1h" }
+			process.env.JWT_SECRET
 		);
 
-		res.status(201).json({ token: token });
+		res.json({ token: token, admin: newUser.admin});
 	}
 	catch (error) {
-		res.status(500).json({ msg: 'Errore' });
+		console.log(error);
+		res.json({ error: 'Errore' });
 	}
 });
 
 app.post('/api/login', async (req, res) => {
 	try {
-		const { username, password } = req.body;
+		const { email, password } = req.body;
 
-		const existingUser = await User.findOne({ where: { username: username } });
+		const existingUser = await User.findOne({ where: { email: email } });
+
 		if (!existingUser) {
-			return res.status(400).json({ msg: 'L\'utente non esiste' });
+			res.json({ error: 'Utente non esistente' });
+			return;
 		}
 
 		if (existingUser.password !== password) {
-			return res.status(400).json({ msg: 'Password non valida' });
+			res.json({ error: 'Password non valida' });
+			return;
 		}
 
 		const token = jwt.sign(
 			{ user: { id: existingUser.id } },
-			'your-secret-key',
-			{ expiresIn: "1h" }
+			process.env.JWT_SECRET
 		);
 
-		res.json({ token: token });
+		res.json({ token: token, admin: existingUser.admin });
 	}
 	catch (error) {
-		res.status(500).json({ msg: 'Errore' });
+		console.log(error)
+		res.json({ error: 'Errore' });
 	}
 });
 
-// il middleware del jwt verifica che il token sia valido e mette in req un oggetto user che ha come proprietà l'id dell'utente
 app.post('/api/whoami', authMiddleware, async (req, res) => {
-
-	const user = await User.findOne({ where: { id: req.user.id } });
-
-	if (!user) {
-		return res.status(400).json({ msg: 'L\'utente non esiste' });
-	}
-
-	res.json({ username: req.user.username });
-});
-
-app.post("/api/listall", async (req, res) => {
-	const users = await User.findAll();
-	res.json(users);
+	res.json({ email: req.user.email, admin: req.user.admin });
 });
 
 
 sequelize.sync().then(async () => {
-	console.log("database synced");
 
-	const port = process.env.PORT || '8080';
+	console.log('Database synced');
+
 	app.listen(port, () => {
-		console.log(`server running http://localhost:${port}`);
+		console.log('Server is listening on port ' + port);
 	});
+
+}).catch(err => {
+	console.error('Unable to connect to the database:', err);
 });
