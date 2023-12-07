@@ -24,3 +24,4 @@ User.init({
 });
 
 Residente.belongsTo(User, { foreignKey: 'idUser' });
+User.belongsTo(Residente, { foreignKey: 'idResidente' });

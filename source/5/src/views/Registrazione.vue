@@ -54,15 +54,13 @@ export default {
 
 				const data = await response.json();
 
-				if (response.error != undefined) {
-					// Login success
-					// Salva il token nel localStorage o in un cookie
-					localStorage.setItem('token', JSON.stringify(data.token));
-					localStorage.setItem('admin', (data.admin == "true") ? true : false);
+				if (!data.error) {
+					localStorage.setItem('token', data.token);
+					localStorage.setItem('admin', data.admin);
+					localStorage.setItem('email', data.email);
 
-					// Puoi anche reindirizzare l'utente a un'altra pagina
 					this.emitter.emit("reload-homepage", null);
-					this.$router.push('/dashboard');
+					this.$router.push('/');
 				} else {
 					// Login fallito
 					this.error = data.error;

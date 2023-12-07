@@ -37,8 +37,47 @@ import { ResidentiCondomini } from './model/ResidentiCondomini.js';
 
 import authMiddleware from './middleware/auth.js';
 
-app.post('/api/listcondomini', async (req, res) => {
-	let condominios = await Condominio.findAll();
+app.post('/api/listusers', authMiddleware, async (req, res) => {
+
+	if (!req.user.admin) {
+		res.json({ error: "Non sei admin" });
+		return;
+	}
+
+	let users = await User.findAll({where: {admin: false}});
+	users = users.map(u => {
+		return { id: u.id, email: u.email, admin: u.admin };
+	});
+	res.json(users);
+});
+
+app.post('/api/getresidente', authMiddleware, async (req, res) => {
+	
+	if (req.user.admin) {
+		res.json({ error: "Gli admin non sono residenti" });
+		return;
+	}
+
+	let residente = await req.user.getResidente()
+	if (!residente) {
+		res.json({ error: "Non sei residente, contatta l'amministratore" });
+		return;
+	}
+
+	res.json(residente);
+});
+
+app.post('/api/listcondomini', authMiddleware, async (req, res) => {
+	let condominios;
+
+	if (!req.user.admin) {
+		let residente = await req.user.getResidente();
+		condominios = await residente.getCondominios();
+	}
+	else {
+		condominios = await Condominio.findAll();
+	}
+
 	res.json(condominios);
 });
 
@@ -51,9 +90,16 @@ app.post('/api/listresidenti', authMiddleware, async (req, res) => {
 	}
 
 	let { idCondominio } = req.body;
-	let condominio = await Condominio.findByPk(idCondominio);
-	let residentiDelCondominio = await condominio.getResidentes();
-	res.json(residentiDelCondominio);
+
+	let residenti
+	if (idCondominio == undefined) {
+		let residenti = await Residente.findAll();
+	}
+	else {
+		let condominio = await Condominio.findByPk(idCondominio);
+		residenti = await condominio.getResidentes();
+	}
+	res.json(residenti);
 });
 
 app.post('/api/listpagamenti', authMiddleware, async (req, res) => {
@@ -61,9 +107,12 @@ app.post('/api/listpagamenti', authMiddleware, async (req, res) => {
 
 	let { idResidente } = req.body;
 
+	let residente = await req.user.getResidente();
+
 	if (!req.user.admin) {
-		if (idResidente != req.user.id) {
+		if (idResidente != residente.id) {
 			res.json({ error: "Non hai i permessi per questa lista" });
+			return;
 		}
 	}
 
@@ -82,8 +131,6 @@ app.post('/api/listpagamenti', authMiddleware, async (req, res) => {
 				{ [Op.gte]: Sequelize.literal('importo') }
 		},
 	});
-
-	console.log(daVersare, versati);
 
 	res.json({ daVersare, versati });
 });
@@ -146,7 +193,7 @@ app.post('/api/registrazione', async (req, res) => {
 			process.env.JWT_SECRET
 		);
 
-		res.json({ token: token, admin: newUser.admin});
+		res.json({ token: token, admin: newUser.admin, email: newUser.email });
 	}
 	catch (error) {
 		console.log(error);
@@ -175,7 +222,7 @@ app.post('/api/login', async (req, res) => {
 			process.env.JWT_SECRET
 		);
 
-		res.json({ token: token, admin: existingUser.admin });
+		res.json({ token: token, admin: existingUser.admin, email: existingUser.email });
 	}
 	catch (error) {
 		console.log(error)

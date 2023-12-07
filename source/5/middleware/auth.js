@@ -8,7 +8,7 @@ const authMiddleware = async (req, res, next) => {
   const token = req.header('x-auth-token');
 
   if (!token) {
-    req.json({ error: 'Token non presente' })
+    res.json({ error: 'Token non presente' })
     return;
   }
 
@@ -18,7 +18,7 @@ const authMiddleware = async (req, res, next) => {
 
 
     if (!req.user) {
-      req.json({ error: 'Utente non esistente' });
+      res.json({ error: 'Utente non esistente' });
       return;
     }
 

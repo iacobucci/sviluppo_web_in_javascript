@@ -17,8 +17,7 @@ slides
 			- linux
 			- visual studio code
 			- node.js
-		---
-		tutorial programmazione
+		tutorial
 			- variabili
 			- controllo del flusso
 				if else if else
@@ -26,12 +25,12 @@ slides
 				dichiarazione
 				definizione
 				chiamata
-		esercizi di programmazione
+		esercizi
 			funzioni
 				max tra due numeri
 				max tra tre numeri
 			test con jest
-				branch soluzioni
+			branch soluzioni
 
 	2 client
 		introdurre client-server
@@ -42,12 +41,17 @@ slides
 			- dom
 			- css
 			- resa grafica
-		---
 			- javascript dom
 				localStorage
-		tutorial programmazione
+		tutorial
 			- array ed oggetti
 			- alcune funzioni accessorie
+			- localStorage
+		esercizi
+			array filtrato
+			array ordinato
+			array ridotto
+			array mappato
 
 	3 controller
 		- pattern mvc
@@ -65,22 +69,23 @@ slides
 				- json
 				- risposte con json
 			- nodemon
-		tutorial programmazione
+		tutorial
+			- import export
+				https://www.digitalocean.com/community/tutorials/js-modules-es6
 			- asincronia
 				promise
 					then
 				async
 					await
-			- import export
-				https://www.digitalocean.com/community/tutorials/js-modules-es6
-		come risolvere problema della persistenza
+		esercizi
+			risolvere più promises in parallelo
 
 	4 model
-		npm install jsonwebtoken sequelize sequelize-cli
-		npm install bootstrap-vue axios
+		npm install sequelize
 
 		tutorial
 			- classi
+			- duck typing
 
 	5 view
 		vue
@@ -99,13 +104,17 @@ slides
 				.jsconfig.json
 			in package.json
 				npx vue-cli-service build --watch
+			patterns
+				props
+				emitter
+				refs
+					non trattato
+					anti-pattern
 		express per far funzionare il router
 			app.use(express.static(path.join(__dirname, 'dist')));
 			app.get('*', (req, res) => {
 				res.sendFile(path.join(__dirname, 'dist/index.html'));
 			});
-		tutorial 
-			localStorage
 		admin
 			dashboard
 			download database

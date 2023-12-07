@@ -2,6 +2,7 @@ import { sequelize } from './model/index.js';
 import { Condominio } from './model/Condominio.js';
 import { Pagamento } from './model/Pagamento.js';
 import { Residente } from './model/Residente.js';
+import { User } from './model/User.js';
 import { ResidentiCondomini } from './model/ResidentiCondomini.js';
 
 
@@ -14,9 +15,6 @@ async function main() {
 
 	let mr = await Residente.create({ nome: "Mario", cognome: "Rossi" });
 	await vs.addResidente(mr);
-
-	// console.log(await vs.getResidentes());
-	// console.log(await r.getCondominios());
 
 	let lv = await Residente.create({ nome: "Luigi", cognome: "Verdi" });
 	await vs.addResidente(lv);
@@ -60,6 +58,24 @@ async function main() {
 
 	let p10 = await Pagamento.create({ importo: 200, versato: 0 });
 	p10.setResidente(gg);
+
+	let a1 = await User.create({ email: "admin@condomini.com", password: "admin", admin: true });
+
+	let u1 = await User.create({ email: "u1@condomini.com", password: "u1", admin: false });
+	u1.setResidente(mr);
+
+	let u2 = await User.create({ email: "u2@condomini.com", password: "u2", admin: false });
+	u2.setResidente(lv);
+
+	let u3 = await User.create({ email: "u3@condomini.com", password: "u3", admin: false });
+	u3.setResidente(gb);
+
+	let u4 = await User.create({ email: "u4@condomini.com", password: "u4", admin: false });
+	u4.setResidente(pn);
+
+	let u5 = await User.create({ email: "u5@condomini.com", password: "u5", admin: false });
+	u5.setResidente(gg);
+
 }
 
 sequelize.sync().then(async () => {
