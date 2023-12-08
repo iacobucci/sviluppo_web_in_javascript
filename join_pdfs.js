@@ -25,4 +25,5 @@ const pdfPaths = "./out";
 const mergedPdfOutputPath = 'sviluppo_web_in_javascript.pdf';
 
 mergePDFs(pdfPaths, mergedPdfOutputPath)
+    .then(() => console.log('PDF uniti con successo!'))
     .catch((error) => console.error('Errore durante l\'unione dei PDF:', error));

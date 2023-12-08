@@ -1,11 +1,13 @@
 .mermaid {
 	display: flex;
 	justify-content: center;
-    font-size: 12px;
+	transform: scale(2);
+	width: fit-content;
 }
 
 .container {
 	display: flex;
+	flex: 1;
 	flex-direction: row;
 	align-items: center;
 }
@@ -14,5 +16,6 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 20px
+	padding: 20px;
+	align-items: center;
 }

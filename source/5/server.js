@@ -37,20 +37,6 @@ import { ResidentiCondomini } from './model/ResidentiCondomini.js';
 
 import authMiddleware from './middleware/auth.js';
 
-app.post('/api/listusers', authMiddleware, async (req, res) => {
-
-	if (!req.user.admin) {
-		res.json({ error: "Non sei admin" });
-		return;
-	}
-
-	let users = await User.findAll({where: {admin: false}});
-	users = users.map(u => {
-		return { id: u.id, email: u.email, admin: u.admin };
-	});
-	res.json(users);
-});
-
 app.post('/api/getresidente', authMiddleware, async (req, res) => {
 	
 	if (req.user.admin) {
