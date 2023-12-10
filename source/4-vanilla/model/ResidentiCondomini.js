@@ -6,18 +6,7 @@ import { Residente } from './Residente.js';
 export class ResidentiCondomini extends Model {
 }
 
-ResidentiCondomini.init({
-	idCondominio: {
-		type: DataTypes.INTEGER,
-		allowNull: true // deve essere true per permettere di inserire un record con idCondominio null
-	},
-	idResidente: {
-		type: DataTypes.INTEGER,
-		allowNull: true
-	},
-}, {
-	sequelize
-});
+ResidentiCondomini.init({ }, { sequelize });
 
 Condominio.belongsToMany(Residente, { through: ResidentiCondomini });
 Residente.belongsToMany(Condominio, { through: ResidentiCondomini });

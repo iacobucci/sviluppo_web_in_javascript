@@ -13,6 +13,7 @@ Le **tecnologie** trattate sono:
 - Express
 - Sequelize (con sqlite3)
 - Vue.js
+- Bootstrap
 
 Le **tecniche di programmazione** trattate sono:
 - imperativa
