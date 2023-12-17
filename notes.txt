@@ -76,6 +76,8 @@ slides
 		tutorial
 			- classi
 			- duck typing
+		
+		admin.js
 
 	5 view
 		vue
@@ -109,3 +111,11 @@ slides
 			dashboard
 			download database
 			upload database
+	
+	6 devops
+		typescript
+		deploy
+		git
+		vite
+		server side rendering
+			nuxt

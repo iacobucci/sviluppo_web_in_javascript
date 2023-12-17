@@ -1,0 +1,15 @@
+{
+	"via": "Vicolo Corto",
+	"residenti":
+		[
+			{
+				"nome": "Mario",
+				"cognome": "Rossi"
+			},
+			{
+				"nome": "Luigi",
+				"cognome": "Verdi"
+			}
+
+		]
+}

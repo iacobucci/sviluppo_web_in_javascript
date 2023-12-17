@@ -1,0 +1,13 @@
+<div class="container">
+	<button id="b1">Clicca</button>
+</div>
+<script>
+	document.getElementById("b1").addEventListener("click", function() {
+		let elem = document.createElement("div");
+		elem.innerHTML = "Cliccato"; 
+		elem.style.color = "red";
+		elem.setAttribute("class", "content");
+		elem.attributes; // [style="color: red;", class="content"]
+		document.getElementsByClassName("container")[0]
+		.appendChild(elem); });
+</script>
