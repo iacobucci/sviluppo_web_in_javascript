@@ -1,12 +1,8 @@
 {
   "name": "6",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
   "author": "",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
   "dependencies": {
     "express": "^4.18.2"
   },
@@ -20,6 +16,5 @@
   "_id": "6@1.0.0",
   "exports": "./dist",
   "license": "ISC",
-  "readme": "ERROR: No README data found!",
-  "type": "module"
+  "readme": "ERROR: No README data found!"
 }
