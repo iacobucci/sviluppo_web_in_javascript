@@ -1,3 +1,7 @@
+:root {
+    --main-color:#06c;
+}
+
 .mermaid {
 	display: flex;
 	justify-content: center;

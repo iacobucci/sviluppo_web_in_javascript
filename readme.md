@@ -52,3 +52,7 @@ Il corso da un giorno è apprezzabile anche da chi non ha esperienza con il codi
 Sono previsti video su youtube di circa 4 ore, in
 - italiano
 - inglese
+
+### Errata
+
+Se trovate delle correzioni ad errori siete invitati ad aprire una pull request!

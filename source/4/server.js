@@ -84,8 +84,6 @@ app.post('/api/versapagamento', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-
-
 sequelize.sync().then(async () => {
 
 	console.log('Database synced');

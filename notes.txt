@@ -1,17 +1,17 @@
 slides
 	1 logica
-		- obiettivo del corso
+		obiettivo del corso
 			creare un'app mvc
 			caso dela gestione dei condomini
 		installazione degli strumenti
-			- linux
-			- visual studio code
-			- node.js
+			linux
+			visual studio code
+			node.js
 		tutorial
-			- variabili
-			- controllo del flusso
+			variabili
+			controllo del flusso
 				if else if else
-			- funzioni
+			funzioni
 				dichiarazione
 				definizione
 				chiamata
@@ -24,19 +24,19 @@ slides
 
 	2 client
 		introdurre client-server
-			- internet e www
-			- http
-			- browser web
-		- cosa fa il browser
-			- dom
-			- css
-			- resa grafica
-			- javascript dom
+			internet e www
+			http
+			browser web
+		cosa fa il browser
+			dom
+			css
+			resa grafica
+			javascript dom
 				localStorage
 		tutorial
-			- array ed oggetti
-			- alcune funzioni accessorie
-			- localStorage
+			array ed oggetti
+			alcune funzioni accessorie
+			localStorage
 		esercizi
 			array filtrato
 			array ordinato
@@ -44,8 +44,8 @@ slides
 			array mappato
 
 	3 controller
-		- pattern mvc
-		- localhost
+		pattern mvc
+		localhost
 		node init
 		package.json
 			type
@@ -55,18 +55,14 @@ slides
 					node index.js
 		npm install
 			viene creato package-lock.json
-			- express
-				- json
-				- risposte con json
-			- nodemon
+			express
+				json
+				risposte con json
+			nodemon
+			body-parser
 		tutorial
-			- import export
+			import export
 				https://www.digitalocean.com/community/tutorials/js-modules-es6
-			- asincronia
-				promise
-					then
-				async
-					await
 		esercizi
 			risolvere più promises in parallelo
 
@@ -74,10 +70,15 @@ slides
 		npm install sequelize
 
 		tutorial
-			- classi
-			- duck typing
+			classi
+			duck typing
 		
 		admin.js
+			asincronia
+				promise
+					then
+				async
+					await
 
 	5 view
 		vue
@@ -113,7 +114,9 @@ slides
 			upload database
 	
 	6 devops
+		npm install ts-node typescript @types/express
 		typescript
+			npx tsc --init
 		deploy
 		git
 		vite

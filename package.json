@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "@marp-team/marp-cli": "^3.4.0",
-    "bootstrap-vue-3": "^0.5.1",
     "mermaid": "^10.6.1",
     "pdf-lib": "^1.17.1"
   }
