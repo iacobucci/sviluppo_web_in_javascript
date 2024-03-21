@@ -1,4 +1,25 @@
 {
 	"markdown.marp.enableHtml": true,
-	"markdown.preview.scrollEditorWithPreview": false
+	"markdown.preview.scrollEditorWithPreview": false,
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "default"
+			},
+			"previewLimit": 50,
+			"server": "127.0.0.1",
+			"port": 3306,
+			"driver": "MySQL",
+			"name": "Aws",
+			"database": "node",
+			"username": "admin",
+			"password": "password"
+		},
+		{
+			"previewLimit": 50,
+			"driver": "SQLite",
+			"database": "${workspaceFolder:sviluppo_web_in_javascript}/source/4/database.sqlite",
+			"name": "courseware"
+		}
+	]
 }

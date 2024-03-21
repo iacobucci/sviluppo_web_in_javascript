@@ -18,10 +18,6 @@ app.post('/api/hello', (req, res) => {
 	res.json({ hello: "world", from: "post" })
 });
 
-app.post('/api/listcondomini', (req, res) => {
-	res.json(condomini);
-});
-
 app.post('/api/bodyparams', (req, res) => {
 	console.log(req.body);
 	let { param } = JSON.parse(req.body);
@@ -35,6 +31,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 import { condomini, residenti, pagamenti } from './dati.js';
+
+app.post('/api/listcondomini', (req, res) => {
+	res.json(condomini);
+});
 
 app.post('/api/listresidenti', (req, res) => {
 	let { idCondominio } = req.body;

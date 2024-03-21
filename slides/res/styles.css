@@ -23,3 +23,7 @@
 	padding: 20px;
 	align-items: center;
 }
+
+.unbold table th {
+  font-weight: normal;
+}

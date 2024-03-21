@@ -61,19 +61,35 @@ slides
 			nodemon
 			body-parser
 		tutorial
+			asincronia
 			import export
 				https://www.digitalocean.com/community/tutorials/js-modules-es6
 		esercizi
 			risolvere più promises in parallelo
-
 	4 model
-		npm install sequelize
+		docker database
+		npm install sequelize typescript
+
+
+		typescript
+			npm install ts-node typescript @types/express
+				npx tsc --init
+			forte impronta verso tipizzazione statica
+				da mettere da suubito all'interno della sezione su db (cap 4)
+			simulazione di comportamento classico oop
+			in un diagramma uml i dati scorrono
+				parametri passati a metodi
+				proprietà di istanza
+					novita
+					simili a proprieta degli oggetti
+				variabili statiche/globali
+				addirittura ci sono i modules
 
 		tutorial
 			classi
 			duck typing
 		
-		admin.js
+		collegamento con admin.js
 			asincronia
 				promise
 					then
@@ -108,17 +124,11 @@ slides
 			app.get('*', (req, res) => {
 				res.sendFile(path.join(__dirname, 'dist/index.html'));
 			});
+		webpack
 		admin
 			dashboard
 			download database
 			upload database
+		nuxt
 	
-	6 devops
-		npm install ts-node typescript @types/express
-		typescript
-			npx tsc --init
-		deploy
-		git
-		vite
-		server side rendering
-			nuxt
+		
