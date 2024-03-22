@@ -1,9 +1,11 @@
 import http from 'http' // importiamo il modulo http
 
-const server = http.createServer(); // creiamo il server
+const app = http.createServer(); // creiamo il server
 
-server.on('request', (req, res) => { // gestiamo le richieste
-	res.end('<html><div style="color: red;">Hello, world!</div></html>');
-})
+app.on('request', (req, res) => {
+	let date = Date();
+	res.setHeader('Content-Type', 'text/html');
+	res.end('<html><div style="color: red;">Hello, world, it\'s ' + date + '</div></html>')
+});
 
-server.listen(3000); // mettiamo in ascolto il server sulla porta 3000
+app.listen(3000); // mettiamo in ascolto il server sulla porta 3000
