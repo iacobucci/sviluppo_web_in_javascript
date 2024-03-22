@@ -1,5 +1,6 @@
 :root {
-    --main-color:#224466
+    --main-color:#224466;
+    --todo-color:#ffee00;
 }
 
 .mermaid {

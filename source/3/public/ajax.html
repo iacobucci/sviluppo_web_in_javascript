@@ -1,0 +1,22 @@
+<button onclick="request(1)">Hello1</button>
+<button onclick="request(2)">Hello2</button>
+
+<script>
+	function request(n) {
+		var xhr = new XMLHttpRequest(); // l'oggetto XMLHttpRequest è associato a richieste HTTP ad un singolo url
+		var url = "/api/hello" + n; // La URL corrente è "/hello"
+		var params = "";
+
+		xhr.open("POST", url, true);
+
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				// Callback chiamata quando la richiesta è completata
+				console.log(xhr.responseText); // Puoi gestire la risposta qui
+			}
+		}
+
+		// Invia la richiesta con i parametri nel corpo della richiesta
+		xhr.send(params);
+	}
+</script>

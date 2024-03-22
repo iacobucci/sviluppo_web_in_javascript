@@ -1,0 +1,10 @@
+<button onclick="request(1)">Hello1</button>
+<button onclick="request(2)">Hello2</button>
+
+<script>
+	async function request(n) {
+		let response = await fetch("/api/hello" + n, { method: "POST"});
+		let text = await response.text();
+		console.log(text)
+	}
+</script>
