@@ -1,47 +1,41 @@
-// funzione che prende una callback (che prende una callback) e la esegue.
-
-function f1(callback1, callback2) {
-	console.log("f1")
-	callback1(callback2)
-}
-
-function f2(callback) {
-	console.log("f2")
-	callback()
-}
-
-function f3() {
-	console.log("f3")
-}
-
-f1(f2, f3)
-
-
-// funzione che ritorna una promise che 
-
-function p1() {
+function sleep(t) {
 	return new Promise((resolve, reject) => {
-		resolve(
-			new Promise((resolve, reject) => {
-				resolve("p1")
-			}));
+		setTimeout(() => { resolve("sleep " + t); }, t);
 	})
-}
+};
 
-p1().then((result) => {
-	console.log(result)
-});
-
-
-async function a1() {
+function fail(t) {
 	return new Promise((resolve, reject) => {
-		resolve("a1");
+		setTimeout(() => { reject("fail " + t); }, t);
 	})
+};
+
+function firstFail () {
+	sleep(300).then((result) => {
+		console.log(result);
+		return sleep(200);
+	}).then((result) => {
+		console.log(result);
+		return fail(100);
+	}).then((result) => {
+		console.log(result);
+		return sleep(200);
+	}).catch((reason) => {
+		console.log(reason);
+	});
 }
+
 
 async function main() {
-	let result1 = await a1();
-	console.log(result1);
+	try {
+		let result = await sleep(300) + " ";
+		result += await sleep(200);
+		return result;
+	} catch (reason) {
+		console.log(reason);
+	}
 }
 
-main();
+main().then((result) => {
+	console.log(result);
+});
