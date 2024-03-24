@@ -1,0 +1,16 @@
+<button onclick="send()">Send with ws</button>
+<button onclick="post()">Send with post</button>
+
+<script>
+	let ws = new WebSocket("ws://" + window.location.host);
+
+	ws.onopen = function () { console.log("Connected to the server"); };
+	ws.onmessage = function (event) { console.log(JSON.parse(event.data)); };
+	function send() { ws.send(JSON.stringify({ via: "Vicolo Corto" })); }
+
+	async function post() {
+		let response = await fetch("/hello", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ via: "Vicolo Corto" }) });
+		let text = await response.json();
+		console.log(text);
+	}
+</script>

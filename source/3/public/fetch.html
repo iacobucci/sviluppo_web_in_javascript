@@ -1,10 +1,30 @@
 <button onclick="request(1)">Hello1</button>
 <button onclick="request(2)">Hello2</button>
+<button onclick="getCondominio()">Condomini</button>
+<button onclick="getCondominioByVia()">Condomini by via</button>
 
 <script>
 	async function request(n) {
-		let response = await fetch("/api/hello" + n, { method: "POST"});
-		let text = await response.text();
+		let response = await fetch("/api/hello" + n, { method: "POST" });
+		let text = await response.json();
 		console.log(text)
+	}
+
+	async function getCondominio() {
+		let response = await fetch("/condominio", { method: "POST" });
+		let data = await response.json();
+		if (data.via)
+			console.log(data.via);
+		if (data.residenti)
+			console.log(data.residenti);
+	}
+
+	async function getCondominioByVia() {
+		let response = await fetch("/condominio_by_via", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ viaz: "Vicolo Corto" }) });
+		let data = await response.json();
+		if (data.via)
+			console.log(data.via);
+		if (data.residenti)
+			console.log(data.residenti);
 	}
 </script>

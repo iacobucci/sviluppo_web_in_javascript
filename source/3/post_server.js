@@ -18,8 +18,25 @@ app.post('/api/hello1', (req, res) => {
 
 app.post('/api/hello2', (req, res) => {
 	setTimeout(() => {
-		res.json({ hello: "world2", from: "post" })
+		let obj = { via: "Vicolo Corto", residenti: [{ nome: "Mario", cognome: "Rossi" }] };
+		res.json(obj);
 	}, 1000);
+});
+
+app.post("/condominio", (req, res) => { 
+	let condominio = { via: "Vicolo Corto", residenti: [{ nome: "Mario", cognome: "Rossi" }] };
+	res.json(condominio);
+});
+
+import bodyParser from 'body-parser';
+
+app.use(bodyParser.json());
+
+app.post("/condominio_by_via", (req, res) => { 
+	if (req.body.via)
+		res.json({ via: req.body.via, residenti: [{ nome: "Mario", cognome: "Rossi" }] });
+	else
+		res.status(400).json({ error: "Via mancante" });
 });
 
 const port = process.env.PORT || 3000;

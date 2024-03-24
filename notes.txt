@@ -1,28 +1,190 @@
 slides
-	1 logica
+	1 scripting
 		obiettivo del corso
-			creare un'app mvc
-			caso dela gestione dei condomini
-		installazione degli strumenti
-			linux
-			visual studio code
-			node.js
-		tutorial
-			variabili
-			controllo del flusso
-				if else if else
-			funzioni
-				dichiarazione
-				definizione
-				chiamata
-		esercizi
-			funzioni
-				max tra due numeri
-				max tra tre numeri
-			test con jest
-			branch soluzioni
-
-	2 client
+			applicazioni web
+				distribuzione multi-piattaforma ed aggiornamenti continui
+				api browser
+				pwa, spa, ssr
+				advertising
+			javascript
+				unico linguaggio di programmazione
+				facile gestione delle risorse
+				paradigmi
+					imperativo
+					oop
+					funzionale
+					reattivo
+			tecnologie open source
+				comunità
+				security through transparency
+				free as in freedom
+		consulta anche
+			canali youtube
+				coding train
+					coding creativo
+				fireship
+					guide rapide per tecnologie moderne
+			references
+				w3schools
+					tutorial introduttivi
+				mdn web docs
+					documentazione ufficiale mozilla
+				ecma international
+					standardizzazione javascript
+			piattaforme di condivisione
+				codepen
+					portfolio frontendisti
+				github
+					repository di codice open source
+		caso di studio
+			gestionale per amministrazione di condomini
+				utente
+					registrazione
+					login
+					dashboard
+				amministratore
+					login
+					dashboard
+				dashboard
+					utente
+						visualizza condominio
+						visualizza pagamento
+					admin
+						gestisci condominio
+						gestisci residenti
+						gestisci pagamento
+		linux
+			sviluppo e distribuzione
+			apt install nodejs npm docker git
+		visual studio code
+			ide
+			syntax highlighting
+			completamneto automatico
+			debugger
+			git
+			palette
+			estensioni
+				html css support
+				eslint
+		node
+			repl
+				console.log("hello world");
+			script
+				test.js
+		scripting
+			istruzioni
+				sequenza
+				condizione
+				loop
+			modello single threaded
+			non blocking event loop
+		variabili
+			nomi
+			valore
+			dichiarazione
+			assegamento
+			riassegnamento
+				dinamico
+				variabile
+			costanti
+			tipi
+				undefined
+				null
+				number
+				string
+				boolean
+				object
+		scoping
+			località
+			visibilità
+			blocco
+		operazioni
+			aritmetiche
+				somma
+				differenza
+				prodotto
+				quoziente
+				modulo
+			precedenza
+				parentesi
+			incremento
+				++
+				--
+				+=
+			concatenazione
+			Math
+				cos
+				sin
+				exp
+				log
+				sqrt
+				pow
+		operazioni booleane
+			ogni funzione logica in combinazione
+			true
+			false
+			base
+				not
+				and
+				or
+			composte
+				nand
+		controllo del flusso
+			comparazione
+				==
+				!=
+				>
+				<
+				>=
+				<=
+			condizione
+				if
+				else if
+				else
+			operatore ternario
+				(condizione) ? vero : falso
+		cicli
+			ripetere un bloco di istruzioni
+			for
+				terminazione prevedibile
+				for(let x = 0; x < n; x++)
+			innestamento
+		while
+			terminazione non prevedibile
+			while(condizione)
+				break
+		funzioni
+			procedure
+			dichiarate
+				function somma() {}
+				let somma = function() {}
+				let prodotto = () => {}
+			definite
+				parametri
+				valore di ritorno
+			chiamate
+				argomenti
+			chiamata nidificata
+				l'rvalue viene valutato dal più interno al più esterno
+			ricorsione
+				stack della chiamata
+		try-catch
+			1/0
+				NaN
+			throw
+			try
+			catch
+				return
+			finally
+		funzioni di callback
+			passate come argomento
+			chiamate successivamente
+		debugger
+			breakpoint
+			step over
+			variables
+			call stack
+	2 browser
 		introdurre client-server
 			internet e www
 			http
@@ -66,10 +228,14 @@ slides
 				https://www.digitalocean.com/community/tutorials/js-modules-es6
 		esercizi
 			risolvere più promises in parallelo
+
+
+
 	4 model
 		docker database
 		npm install sequelize typescript
 
+		typeorm
 
 		typescript
 			npm install ts-node typescript @types/express
@@ -84,7 +250,7 @@ slides
 					simili a proprieta degli oggetti
 				variabili statiche/globali
 				addirittura ci sono i modules
-
+			
 		tutorial
 			classi
 			duck typing
