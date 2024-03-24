@@ -1,3 +1,44 @@
+ratio
+	ci sono milioni di corsi online di javascript, che senso ha farne un altro?
+		il modo in cui lo avrei voluto imparare io
+			teorico
+				infrastrutture web
+				architettura software
+				modellazione relazionale dei dati
+				pattern mvc
+			pratico
+				caso di studio del gestionale
+			ordinato
+				si costruisce dal nucleo verso l'interfaccia
+			controesempi per capire i boundaries della applicabilità delle varie idee
+		scrivere è fare ordine delle idee
+			ho raffinato la mia conoscenza di javascript ed imparato cose nuove
+		fare pratica nell'insegnamento
+			avere una voce su youtube è un'abilità da allenare
+			con un progetto come questo aumenta l'accountability e l'autorevolezza
+		creare contenuti per canale youtube
+			punto di partenza per la creazione di nuovi corsi/esposizioni
+			lo sviluppo web è un campo così vasto e si presta bene ad una spiegazione modulare
+		avere un progetto cumulativo nel portfolio
+			di tutte le tecnologie web essenziali
+			con opinioni personali e best practices
+		insegnare a mio padre
+			il caso di studio è basato su una sua attività professionale
+	perchè le slides e non animazioni, scrittura di codice, laoratorio interattivo?
+		sono veloci da scrivere
+			ho energia limitata da impiegare in questo progetto
+			con mermarpidsome posso scrivere markdown, aggiungere diagrammi, visualizzare una preview in tempo reale ed esportare in pdf
+		le slide dirigono il discorso
+			parlare con uno script
+		estrema concisione
+			quando si consultano le slide magari si trova subito la risposta
+		scritte in markdown
+			portabili su pagine web
+			esportabili in pdf
+		contenuti aggiuntivi
+			file sorgenti
+			esercizi
+
 slides
 	1 scripting
 		obiettivo del corso
