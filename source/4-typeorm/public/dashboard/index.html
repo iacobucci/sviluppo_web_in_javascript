@@ -1,0 +1,186 @@
+<head>
+	<link rel="stylesheet" href="css/styles.css">
+	<title>Condomini</title>
+</head>
+
+<body>
+	<h1 style="text-align: center;">Dashboard</h1>
+	<div class="container">
+		<div class="content">
+			<h3>Condomini</h3>
+			<ul id="condomini">
+
+			</ul>
+		</div>
+
+		<div class="content">
+			<h3> Residenti</h3>
+			<ul id="residenti">
+
+			</ul>
+		</div>
+
+		<div class="content">
+			<h3> Pagamenti da versare</h3>
+			<ul id="pagamentidaversare">
+
+			</ul>
+
+			<h3>Pagamenti versati</h3>
+			<ul id="pagamentiversati">
+
+			</ul>
+		</div>
+	</div>
+
+	<script>
+
+		let condomini = []
+
+		function ottieniCondomini() {
+			fetch('/api/listcondomini', {
+				method: 'POST',
+			})
+				.then(response => response.json())
+				.then(data => {
+					condomini = data;
+					document.getElementById("condomini").innerHTML = "";
+
+					for (let condominio of condomini) {
+						let li = document.createElement("li");
+						let a = document.createElement("a");
+						li.appendChild(a);
+
+						a.innerHTML = condominio.via;
+						a.onclick = function () {
+							ottieniResidenti(condominio.id);
+						}
+						document.getElementById("condomini").appendChild(li);
+					}
+				});
+		}
+
+		// al caricamento della pagina, ottieni i condomini
+		ottieniCondomini();
+
+		residenti = []
+
+		function ottieniResidenti(idCondominio) {
+			let body = JSON.stringify({
+				idCondominio: idCondominio
+			});
+			fetch('/api/listresidenti', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: body
+			})
+				.then(response => response.json())
+				.then(data => {
+					residenti = data;
+
+					document.getElementById("residenti").innerHTML = "";
+
+					for (let residente of residenti) {
+						let li = document.createElement("li");
+						let a = document.createElement("a");
+
+						li.appendChild(a);
+						a.innerHTML = residente.nome + " " + residente.cognome;
+
+						a.onclick = function () {
+							ottieniPagamenti(residente.id);
+						}
+
+						document.getElementById("residenti").appendChild(li);
+					}
+				});
+		}
+
+		pagamenti = []
+
+		function ottieniPagamenti(idResidente) {
+			fetch('/api/listpagamenti', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					idResidente: idResidente
+				})
+			})
+				.then(response => response.json())
+				.then(data => {
+					pagamenti = data;
+
+					document.getElementById("pagamentidaversare").innerHTML = "";
+					document.getElementById("pagamentiversati").innerHTML = "";
+
+
+					for (let pagamento of pagamenti.versati) {
+						let li = document.createElement("li");
+						let a = document.createElement("a");
+						li.appendChild(a);
+
+						a.innerHTML = pagamento.id + ": " + pagamento.importo;
+
+						document.getElementById("pagamentiversati").appendChild(li);
+					}
+
+
+					for (let pagamento of pagamenti.daVersare) {
+						let li = document.createElement("li");
+						let a = document.createElement("a");
+						li.appendChild(a);
+
+						a.innerHTML = pagamento.id + ": " + pagamento.importo + " " + pagamento.versato;
+
+						let b = document.createElement("input");
+						li.appendChild(b);
+
+						b.type = "number"
+						b.id = "input" + pagamento.id;
+						b.min = 0;
+						b.max = pagamento.importo - pagamento.versato;
+
+						b.onkeypress = function (event) {
+							if (event.key == "Enter") {
+								versaPagamento(pagamento.id);
+							}
+						}
+
+						document.getElementById("pagamentidaversare").appendChild(li);
+					}
+				});
+		}
+
+		function versaPagamento(idPagamento) {
+			let body = JSON.stringify({
+				idPagamento: idPagamento,
+				// bisogna riferirsi all'elemento HTML con l'id "input" + idPagamento
+				versamento: document.getElementById("input" + idPagamento).value
+			});
+			fetch('/api/versapagamento', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: body
+			})
+				.then(response => response.json())
+				.then(data => {
+
+					if (data.error) {
+						alert(data.error);
+						return;
+					}
+
+					// aggiorna la lista dei pagamenti
+					ottieniPagamenti(data.idResidente);
+				});
+		}
+
+
+	</script>
+</body>

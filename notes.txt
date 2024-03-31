@@ -1,5 +1,6 @@
-ratio
-	ci sono milioni di corsi online di javascript, che senso ha farne un altro?
+motif
+	ritorno a fare video su youtube dopo 10 anni
+	ci sono milioni di guide online di javascript, che senso ha farne un altro?
 		il modo in cui lo avrei voluto imparare io
 			teorico
 				infrastrutture web
@@ -28,6 +29,8 @@ ratio
 		sono veloci da scrivere
 			ho energia limitata da impiegare in questo progetto
 			con mermarpidsome posso scrivere markdown, aggiungere diagrammi, visualizzare una preview in tempo reale ed esportare in pdf
+		sono estensibili con pull request
+			chiunque può contribuire su github
 		le slide dirigono il discorso
 			parlare con uno script
 		estrema concisione
@@ -38,6 +41,13 @@ ratio
 		contenuti aggiuntivi
 			file sorgenti
 			esercizi
+		mia tesi di laurea
+	perchè studiare javascript e lo sviluppo web, se ci sono i large language model e l'intelligenza artificiale che scrive codice per noi?
+		javascript contro altri linguaggi
+		douglas crockford contro javascript
+		sistema complesso da conoscere
+		un informatico deve avere una buona nozione intuitiva di come funziona internet
+		stimola l'intelligenza
 
 slides
 	1 scripting
@@ -225,29 +235,14 @@ slides
 			step over
 			variables
 			call stack
+			
 	2 browser
-		introdurre client-server
-			internet e www
-			http
-			browser web
-		cosa fa il browser
-			dom
-			css
-			resa grafica
-			javascript dom
-				localStorage
-		tutorial
-			array ed oggetti
-			alcune funzioni accessorie
-			localStorage
-		esercizi
-			array filtrato
-			array ordinato
-			array ridotto
-			array mappato
+		bundling per retrocompatibilità
+			ES5
 
 	3 controller
 		pattern mvc
+			fat client vs mvc
 		localhost
 		node init
 		package.json
@@ -278,6 +273,15 @@ slides
 
 		typeorm
 
+
+		tipizzazione
+			perchè
+				errore di battitura
+				errore di tipo
+				errore di logica
+			jsdocs
+			typescript
+
 		typescript
 			npm install ts-node typescript @types/express
 				npx tsc --init
@@ -304,6 +308,10 @@ slides
 					await
 
 	5 view
+		components
+		internationalization
+		server side rendering
+		nuxt
 		vue
 			npm install -g @vue/cli
 			npx vue create .
