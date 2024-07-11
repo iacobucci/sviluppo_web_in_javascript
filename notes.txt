@@ -1,5 +1,4 @@
 motif
-	ritorno a fare video su youtube dopo 10 anni
 	ci sono milioni di guide online di javascript, che senso ha farne un altro?
 		il modo in cui lo avrei voluto imparare io
 			teorico
@@ -48,6 +47,30 @@ motif
 		sistema complesso da conoscere
 		un informatico deve avere una buona nozione intuitiva di come funziona internet
 		stimola l'intelligenza
+
+problemi
+	compatibilità dei browser
+	velocità di caricamento
+	sicurezza
+	responsive design
+	seo (search engine optimization)
+	accessibilità
+	gestione dei contenuti
+	test e debug
+	gestione delle dipendenze e dei pacchetti
+	gestione dell'autenticazione e dell'autorizzazione
+	scalabilità dell'applicazione
+	test automatizzati
+	manutenzione del codice
+	gestione delle prestazioni
+	sicurezza delle api
+	gestione delle sessioni utente
+	internazionalizzazione e localizzazione
+	gestione degli errori e del logging
+	comunicazione e collaborazione
+	contratti di scambio di messaggi tra software curati da team diversi
+	compliance normativo e legale
+	gestione delle risorse e dell'infrastruttura
 
 slides
 	1 scripting
@@ -237,6 +260,16 @@ slides
 			call stack
 			
 	2 browser
+		storia dei browser web
+			aggiunta di javascript
+				1995
+				brendan eich
+				netscape
+			standardizzazione
+				ecmascript
+				es5
+				es6
+		il browser ha una importanza centrale
 		bundling per retrocompatibilità
 			ES5
 
